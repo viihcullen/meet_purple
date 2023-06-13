@@ -1,0 +1,37 @@
+#mainDiv {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 30px 50px;
+}
+
+#tableDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 30px 50px;
+}
+
+#delete{
+    background-color: #CEB3F2;
+    color: #fff;
+}
+
+#add-button{
+    background-color: #AE88E1;
+    border-color: black;
+;
+    border-color: #AE88E1;
+;
+}
+
+#editarbutton{
+    background-color: #AE88E1;
+;
+    color: #fff;
+}
