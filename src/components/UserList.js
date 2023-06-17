@@ -19,10 +19,10 @@ export const UserList = () => {
 
     const [users, setUsers] = useState([]);
     const [existingTaskId, setExistingTaskId] = useState("");
-    const [existingTaskName, setExistingTaskName] = useState("");
-    const [existingTaskEmail, setExistingTaskEmail] = useState("");
-    const [existingTaskTelefone, setExistingTaskTelefone] = useState("");
-    const [existingTaskCidade, setExistingTaskCidade] = useState("");
+    const [existingTaskPaciente, setExistingTaskPaciente] = useState("");
+    const [existingTaskMedico, setExistingTaskMedico] = useState("");
+    const [existingTaskProntuario, setExistingTaskProntuario] = useState("");
+    const [existingTaskRemedio, setExistingTaskRemedio] = useState("");
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -37,18 +37,18 @@ export const UserList = () => {
         const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
 
         
-        if (existingTaskName === "" || existingTaskEmail === "") {
+        if (existingTaskPaciente === "" || existingTaskMedico === "") {
             console.log("Required data missing");
             alert("Please fill the required details");
             return;
         }
 
         const updatedTask = {
-            taskName: existingTaskName,
-            taskEmail: existingTaskEmail,
-            taskTelefone: existingTaskTelefone,
-            taskCidade: existingTaskCidade,
-            date
+            taskPaciente: existingTaskPaciente,
+            taskMedico: existingTaskMedico,
+            taskRemedio: existingTaskRemedio,
+            taskProntuario: existingTaskProntuario,
+            date,
         }
 
         
@@ -77,13 +77,13 @@ export const UserList = () => {
     }
 
     
-    const editTask = async (id, name, email, telefone, cidade) => {
+    const editTask = async (id, paciente, medico, prontuario, remedio) => {
         setOpen(true);
         setExistingTaskId(id);
-        setExistingTaskName(name);
-        setExistingTaskEmail(email);
-        setExistingTaskTelefone(telefone);
-        setExistingTaskCidade(cidade);
+        setExistingTaskPaciente(paciente);
+        setExistingTaskMedico(medico);
+        setExistingTaskProntuario(prontuario);
+        setExistingTaskRemedio(remedio);
     }
 
     
@@ -100,15 +100,15 @@ export const UserList = () => {
 
     return (
         <div id='tableDiv'>
-            <h1>USUÁRIOS</h1>
+            <h1>Receita</h1>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell align="left" >Name</TableCell>
-                            <TableCell align="left">Email</TableCell>
-                            <TableCell align="left">Cidade</TableCell>
-                            <TableCell align="left">Telefone</TableCell>
+                        <TableRow className='barra'>
+                            <TableCell align="left" >Paciente</TableCell>
+                            <TableCell align="left">Médico</TableCell>
+                            <TableCell align="left">Remédio</TableCell>
+                            <TableCell align="left">Prontuário</TableCell>
                             <TableCell align="left">Editar</TableCell>
                         </TableRow>
                     </TableHead>
@@ -118,13 +118,13 @@ export const UserList = () => {
                                 key={task.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell align="left">{task.taskName}</TableCell>
-                                <TableCell align="left">{task.taskEmail}</TableCell>
-                                <TableCell align="left">{task.taskCidade}</TableCell>
-                                <TableCell align="left">{task.taskTelefone}</TableCell>
+                                <TableCell align="left">{task.taskPaciente}</TableCell>
+                                <TableCell align="left">{task.taskMedico}</TableCell>
+                                <TableCell align="left">{task.taskRemedio}</TableCell>
+                                <TableCell align="left">{task.taskProntuario}</TableCell>
                                 <TableCell align="left">
                                     <Stack direction="row" spacing={2}>
-                                        <Button id='editarbutton' onClick={(e) => editTask(task.id, task.taskName, task.taskEmail, task.taskCidade, task.taskTelefone)}>
+                                        <Button id='editarbutton' onClick={(e) => editTask(task.id, task.taskPaciente, task.taskMedico, task.taskRemedio, task.taskProntuario)}>
                                             Editar
                                         </Button>
 
@@ -146,10 +146,10 @@ export const UserList = () => {
                     <DialogContentText>
 
                     </DialogContentText>
-                    <TextField autoFocus margin="dense" value={existingTaskName} label="Alterar Name" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskName(e.target.value)} />
-                    <TextField autoFocus margin="dense" value={existingTaskEmail} label="Email" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskEmail(e.target.value)}/>
-                    <TextField autoFocus margin="dense" value={existingTaskTelefone} label="Telefone" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskTelefone(e.target.value)} />
-                    <TextField autoFocus margin="dense" value={existingTaskCidade} label="Cidade" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskCidade(e.target.value)} />
+                    <TextField autoFocus margin="dense" value={existingTaskPaciente} label="Alterar Name" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskPaciente(e.target.value)} />
+                    <TextField autoFocus margin="dense" value={existingTaskMedico} label="Medico" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskMedico(e.target.value)}/>
+                    <TextField autoFocus margin="dense" value={existingTaskRemedio} label="Remedio" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskRemedio(e.target.value)} />
+                    <TextField autoFocus margin="dense" value={existingTaskProntuario} label="Prontuario" type="text" fullWidth variant="standard" onChange={(e) => setExistingTaskProntuario(e.target.value)} />
 
                 </DialogContent>
                 <DialogActions>

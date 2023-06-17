@@ -5,25 +5,24 @@ import '../styles/main.css';
 
 export const AddUser = () => {
 
-    const [taskName, setTaskName] = useState("");
-    const [taskEmail, setTaskEmail] = useState("");
-    const [taskTelefone, setTaskTelefone] = useState("");
-    const [taskCidade, setTaskCidade] = useState("");
+    const [taskPaciente, setTaskPaciente] = useState("");
+    const [taskMedico, setTaskMedico] = useState("");
+    const [taskRemedio, setTaskRemedio] = useState("");
+    const [taskProntuario, setTaskProntuario] = useState("");
 
     
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-
         const current = new Date();
         const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
 
         const newTask = {
-            taskName, taskEmail, taskTelefone, taskCidade, date,
+            taskPaciente, taskMedico, taskRemedio, taskProntuario, date,
         }
 
         
-        if (taskName === "" || taskEmail === "") {
+        if (taskPaciente === "" || taskMedico === "") {
             console.log("Dados insufientes");
             alert("Por favor, coloque os dados completos");
             return;
@@ -31,10 +30,10 @@ export const AddUser = () => {
 
         try {
             await TaskService.addTasks(newTask);
-            setTaskName("");
-            setTaskEmail("");
-            setTaskTelefone("");
-            setTaskCidade("");
+            setTaskPaciente("");
+            setTaskMedico("");
+            setTaskRemedio("");
+            setTaskProntuario("");
         } catch (err) {
             console.log(err);
             return;
@@ -45,27 +44,27 @@ export const AddUser = () => {
         <div id='mainDiv'>
             <form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
-                <h1>Novo Usuário</h1>
+                <h1>Nova Receita</h1>
                     <InputGroup>
-                        <Form.Control  type="text" placeholder="Name" value={taskName} onChange={(e) => setTaskName(e.target.value)} />
+                        <Form.Control  type="text" placeholder="Paciente" value={taskPaciente} onChange={(e) => setTaskPaciente(e.target.value)} />
                     </InputGroup>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <InputGroup>
-                        <Form.Control type="text" placeholder="Email" value={taskEmail} onChange={(e) => setTaskEmail(e.target.value)} />
+                        <Form.Control type="text" placeholder="Médico" value={taskMedico} onChange={(e) => setTaskMedico(e.target.value)} />
                     </InputGroup>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <InputGroup>
-                        <Form.Control type="text" placeholder="Telefone" value={taskTelefone} onChange={(e) => setTaskTelefone(e.target.value)} />
+                        <Form.Control type="text" placeholder="Remédio" value={taskRemedio} onChange={(e) => setTaskRemedio(e.target.value)} />
                     </InputGroup>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <InputGroup>
-                        <Form.Control type="text" placeholder="Cidade" value={taskCidade} onChange={(e) => setTaskCidade(e.target.value)} />
+                        <Form.Control type="text" placeholder="Prontuário" value={taskProntuario} onChange={(e) => setTaskProntuario(e.target.value)} />
                     </InputGroup>
                 </Form.Group>
 

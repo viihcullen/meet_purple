@@ -15,6 +15,7 @@
     margin: 0 auto;
     max-width: 900px;
     padding: 30px 50px;
+   
 }
 
 #delete{
@@ -34,4 +35,7 @@
     background-color: #AE88E1;
 ;
     color: #fff;
+}
+.barra{
+    background-color: #AE88E1;
 }
